@@ -14,6 +14,8 @@
 		35E0F49D2146C548006AF448 /* TheMovieApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 35E0F49B2146C548006AF448 /* TheMovieApp.xcdatamodeld */; };
 		35E0F49F2146C54A006AF448 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35E0F49E2146C54A006AF448 /* Assets.xcassets */; };
 		35E0F4A22146C54A006AF448 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35E0F4A02146C54A006AF448 /* LaunchScreen.storyboard */; };
+		35E0F4AC2147B842006AF448 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E0F4AB2147B842006AF448 /* CollectionViewCell.swift */; };
+		35E0F4AE2148F59A006AF448 /* MovieDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E0F4AD2148F59A006AF448 /* MovieDetailsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		35E0F49E2146C54A006AF448 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		35E0F4A12146C54A006AF448 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		35E0F4A32146C54A006AF448 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35E0F4AB2147B842006AF448 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		35E0F4AD2148F59A006AF448 /* MovieDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsController.swift; sourceTree = "<group>"; };
 		38F0DCE7AD42D82F21376A8D /* Pods-TheMovieApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TheMovieApp/Pods-TheMovieApp.release.xcconfig"; sourceTree = "<group>"; };
 		B695553AFFB5D97C0591EF09 /* Pods_TheMovieApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheMovieApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E87E21841D09182419C4D3E5 /* Pods-TheMovieApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TheMovieApp/Pods-TheMovieApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -78,6 +82,8 @@
 				35E0F4A02146C54A006AF448 /* LaunchScreen.storyboard */,
 				35E0F4A32146C54A006AF448 /* Info.plist */,
 				35E0F49B2146C548006AF448 /* TheMovieApp.xcdatamodeld */,
+				35E0F4AB2147B842006AF448 /* CollectionViewCell.swift */,
+				35E0F4AD2148F59A006AF448 /* MovieDetailsController.swift */,
 			);
 			path = TheMovieApp;
 			sourceTree = "<group>";
@@ -186,12 +192,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TheMovieApp/Pods-TheMovieApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
@@ -209,6 +217,8 @@
 			files = (
 				35E0F49D2146C548006AF448 /* TheMovieApp.xcdatamodeld in Sources */,
 				35E0F4972146C548006AF448 /* ViewController.swift in Sources */,
+				35E0F4AE2148F59A006AF448 /* MovieDetailsController.swift in Sources */,
+				35E0F4AC2147B842006AF448 /* CollectionViewCell.swift in Sources */,
 				35E0F4952146C548006AF448 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
