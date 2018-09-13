@@ -76,16 +76,40 @@
 			isa = PBXGroup;
 			children = (
 				35E0F4942146C548006AF448 /* AppDelegate.swift */,
-				35E0F4962146C548006AF448 /* ViewController.swift */,
-				35E0F4982146C548006AF448 /* Main.storyboard */,
+				35E0F4B0214A67EE006AF448 /* Controllers */,
+				35E0F4AF214A67DB006AF448 /* Views */,
 				35E0F49E2146C54A006AF448 /* Assets.xcassets */,
 				35E0F4A02146C54A006AF448 /* LaunchScreen.storyboard */,
 				35E0F4A32146C54A006AF448 /* Info.plist */,
-				35E0F49B2146C548006AF448 /* TheMovieApp.xcdatamodeld */,
-				35E0F4AB2147B842006AF448 /* CollectionViewCell.swift */,
-				35E0F4AD2148F59A006AF448 /* MovieDetailsController.swift */,
+				35E0F4B1214A6805006AF448 /* Models */,
 			);
 			path = TheMovieApp;
+			sourceTree = "<group>";
+		};
+		35E0F4AF214A67DB006AF448 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				35E0F4982146C548006AF448 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		35E0F4B0214A67EE006AF448 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				35E0F4AB2147B842006AF448 /* CollectionViewCell.swift */,
+				35E0F4962146C548006AF448 /* ViewController.swift */,
+				35E0F4AD2148F59A006AF448 /* MovieDetailsController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		35E0F4B1214A6805006AF448 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				35E0F49B2146C548006AF448 /* TheMovieApp.xcdatamodeld */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		FCCE00B0BC5FCE6391F418E0 /* Pods */ = {
@@ -192,14 +216,18 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TheMovieApp/Pods-TheMovieApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlignedCollectionViewFlowLayout/AlignedCollectionViewFlowLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
+				"${BUILT_PRODUCTS_DIR}/Hashtags/Hashtags.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlignedCollectionViewFlowLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hashtags.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
