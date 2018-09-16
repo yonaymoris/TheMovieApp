@@ -28,17 +28,22 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var page = 1
     var currentIndex : Int = 0
     var conntectionIssuesFlag : Bool = false
+    var width : CGFloat = 0.0
+    
+    override func viewWillLayoutSubviews() {
+        if view.frame.size.width < view.frame.size.height {
+            width = (view.frame.size.width - 30) / 2
+        } else {
+            width = (view.frame.size.width - 60) / 4
+        }
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.itemSize = CGSize(width: width, height: 255)
+        collectionView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         SVProgressHUD.show()
-        
-        var width = view.frame.size.width
-        if view.frame.size.width < view.frame.size.height {
-            width = (view.frame.size.height - 60) / 4
-        } else {
-            width = (view.frame.size.width - 60) / 4
-        }
         
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: 255)
@@ -132,7 +137,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         let img_path = movies[indexPath.row].value(forKeyPath: "poster_path") as! String
         cell.titleLabel.text = movies[indexPath.row].value(forKeyPath: "title") as! String
-        cell.ratingLabel.text = "\(movies[indexPath.row].value(forKeyPath: "vote_average") as! Double)/10(\(movies[indexPath.row].value(forKeyPath: "vote_average") as! Double) votes)"
+        cell.ratingLabel.text = "\(movies[indexPath.row].value(forKeyPath: "vote_average") as! Double)/10(\(movies[indexPath.row].value(forKeyPath: "vote_count") as! Double) votes)"
         
         if let img_url = URL(string: "http://image.tmdb.org/t/p/w185/\(img_path)") {
             do {

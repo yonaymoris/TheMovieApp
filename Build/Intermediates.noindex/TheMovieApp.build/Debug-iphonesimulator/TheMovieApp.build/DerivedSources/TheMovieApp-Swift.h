@@ -253,6 +253,7 @@ SWIFT_CLASS("_TtC11TheMovieApp22MovieDetailsController")
 @property (nonatomic, strong) IBOutlet UILabel * _Null_unspecified overViewLabel;
 @property (nonatomic, strong) IBOutlet UILabel * _Null_unspecified budgetLabel;
 - (void)viewDidLoad;
+- (void)viewWillLayoutSubviews;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -264,6 +265,7 @@ SWIFT_CLASS("_TtC11TheMovieApp22MovieDetailsController")
 SWIFT_CLASS("_TtC11TheMovieApp14ViewController")
 @interface ViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 @property (nonatomic, strong) IBOutlet UICollectionView * _Null_unspecified collectionView;
+- (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
 - (void)scrollViewDidScroll:(UIScrollView * _Nonnull)scrollView;
 - (IBAction)reloadDataButtonPressed:(id _Nonnull)sender;

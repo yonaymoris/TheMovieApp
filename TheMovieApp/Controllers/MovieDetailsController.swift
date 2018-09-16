@@ -19,12 +19,12 @@ class MovieDetailsController: UIViewController {
     @IBOutlet var posterImage: UIImageView!
     @IBOutlet var ratingLabel: UILabel!
     @IBOutlet var votesLabel: UILabel!
-    //@IBOutlet var cosmosView: CosmosView!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var overViewLabel: UILabel!
     @IBOutlet var budgetLabel: UILabel!
-    //@IBOutlet var genresView: HashtagView!
     
+    var cosmosView = CosmosView()
+    var genresView = HashtagView()
     
     var averageScore : Double = 0.0
     var titleText : String = ""
@@ -39,11 +39,6 @@ class MovieDetailsController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        for i in genres {
-//            var tag = HashTag(word: genre(id: i), withHashSymbol: false, isRemovable: false)
-//            genresView.addTag(tag: tag)
-//        }
 
         overViewLabel.sizeToFit()
         titleLabel.text = titleText
@@ -54,8 +49,7 @@ class MovieDetailsController: UIViewController {
         budgetLabel.text = budget
         
         dateLabel.sizeToFit()
-        // manually create cosmosView
-        let cosmosView = CosmosView(frame: CGRect(x: dateLabel.frame.origin.x, y: (dateLabel.frame.origin.y + dateLabel.frame.height+5), width: 50, height: 50))
+
         mainView.addSubview(cosmosView)
         
         cosmosView.settings.starSize = 10
@@ -63,9 +57,6 @@ class MovieDetailsController: UIViewController {
         cosmosView.settings.starMargin = 0
         cosmosView.rating = averageScore
         
-        
-        // manually create hashtags view
-        let genresView = HashtagView(frame: CGRect(x: dateLabel.frame.origin.x-10, y: (cosmosView.frame.origin.y + cosmosView.frame.height+5), width: 150, height: 100))
         genresView.tagBackgroundColor = UIColor.lightGray
         genresView.tagCornerRadius = 5.0
         genresView.tagPaddingTop = 2.0
@@ -73,7 +64,7 @@ class MovieDetailsController: UIViewController {
         genresView.tagPaddingRight = 2.0
         genresView.tagPaddingLeft = 2.0
         genresView.horizontalTagSpacing = 2.0
-        
+
         for i in genres {
             let tag = HashTag(word: genre(id: i), withHashSymbol: false, isRemovable: false)
             genresView.addTag(tag: tag)
@@ -82,7 +73,6 @@ class MovieDetailsController: UIViewController {
         
         if let img_url1 = URL(string: "http://image.tmdb.org/t/p/w185/\(backgroundImg)") {
             do {
-                //print("dope")
                 let data = try Data(contentsOf: img_url1)
                 backgroundImage.image = UIImage(data: data)
             } catch let err {
@@ -100,6 +90,16 @@ class MovieDetailsController: UIViewController {
             }
         }
         
+    }
+    
+    override func viewWillLayoutSubviews() {
+        if view.frame.size.width < view.frame.size.height {
+            cosmosView.frame = CGRect(x: dateLabel.frame.origin.x, y: (dateLabel.frame.origin.y + dateLabel.frame.height+10), width: 50, height: 50)
+            genresView.frame = CGRect(x: dateLabel.frame.origin.x-10, y: (cosmosView.frame.origin.y+10), width: 150, height: 150)
+        } else {
+            cosmosView.frame = CGRect(x: dateLabel.frame.origin.x+15, y: (dateLabel.frame.origin.y + dateLabel.frame.height+10), width: 50, height: 50)
+            genresView.frame = CGRect(x: dateLabel.frame.origin.x+5, y: (cosmosView.frame.origin.y+10), width: 150, height: 150)
+        }
     }
     
     func genre(id : Int) -> String {
