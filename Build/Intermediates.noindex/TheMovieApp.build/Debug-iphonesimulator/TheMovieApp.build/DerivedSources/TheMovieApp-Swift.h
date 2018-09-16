@@ -238,10 +238,12 @@ SWIFT_CLASS_NAMED("Movie")
 @property (nonatomic) int64_t vote_count;
 @end
 
+@class UIView;
 @class NSBundle;
 
 SWIFT_CLASS("_TtC11TheMovieApp22MovieDetailsController")
 @interface MovieDetailsController : UIViewController
+@property (nonatomic, strong) IBOutlet UIView * _Null_unspecified mainView;
 @property (nonatomic, strong) IBOutlet UIImageView * _Null_unspecified backgroundImage;
 @property (nonatomic, strong) IBOutlet UILabel * _Null_unspecified titleLabel;
 @property (nonatomic, strong) IBOutlet UIImageView * _Null_unspecified posterImage;

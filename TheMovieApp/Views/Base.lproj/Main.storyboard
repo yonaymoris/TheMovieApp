@@ -217,13 +217,14 @@
                                             <constraint firstAttribute="height" constant="225" id="ibn-IK-l5X"/>
                                             <constraint firstAttribute="bottom" secondItem="mWK-3d-PJk" secondAttribute="bottom" id="rCZ-4D-4Cf"/>
                                             <constraint firstItem="mWK-3d-PJk" firstAttribute="leading" secondItem="gUy-Jz-MKU" secondAttribute="leading" constant="25" id="sHb-pT-AZU"/>
+                                            <constraint firstAttribute="width" constant="300" id="wDZ-dg-EsH"/>
                                             <constraint firstAttribute="trailing" secondItem="wJ1-ih-By5" secondAttribute="trailing" constant="10" id="xV1-q5-glx"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="auf-dQ-nCX">
                                         <rect key="frame" x="0.0" y="225" width="375" height="233"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5TC-1G-xIW">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="1" translatesAutoresizingMaskIntoConstraints="NO" id="5TC-1G-xIW">
                                                 <rect key="frame" x="25" y="25" width="325" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <nil key="textColor"/>
@@ -233,6 +234,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="5TC-1G-xIW" secondAttribute="trailing" constant="25" id="Afa-Tp-VAR"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="5TC-1G-xIW" secondAttribute="bottom" constant="10" id="DeQ-Hd-qBQ"/>
                                             <constraint firstItem="5TC-1G-xIW" firstAttribute="leading" secondItem="auf-dQ-nCX" secondAttribute="leading" constant="25" id="Z8Z-Ef-Pod"/>
                                             <constraint firstItem="5TC-1G-xIW" firstAttribute="top" secondItem="auf-dQ-nCX" secondAttribute="top" constant="25" id="t3Q-B2-5ax"/>
                                         </constraints>
@@ -261,6 +263,7 @@
                         <outlet property="backgroundImage" destination="nAZ-Ol-dIk" id="k1S-Qx-Qi7"/>
                         <outlet property="budgetLabel" destination="wJ1-ih-By5" id="hvn-st-qW4"/>
                         <outlet property="dateLabel" destination="biO-I4-rYw" id="Qqi-lN-qeK"/>
+                        <outlet property="mainView" destination="gUy-Jz-MKU" id="1xz-Pc-ZLn"/>
                         <outlet property="overViewLabel" destination="5TC-1G-xIW" id="oLM-ND-fZe"/>
                         <outlet property="posterImage" destination="mWK-3d-PJk" id="X3k-ck-w31"/>
                         <outlet property="ratingLabel" destination="f6G-51-9EA" id="NCf-Wt-1fX"/>

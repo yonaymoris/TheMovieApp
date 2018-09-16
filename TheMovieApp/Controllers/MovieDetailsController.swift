@@ -12,6 +12,8 @@ import Hashtags
 
 class MovieDetailsController: UIViewController {
 
+    @IBOutlet var mainView: UIView!
+    
     @IBOutlet var backgroundImage: UIImageView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var posterImage: UIImageView!
@@ -47,11 +49,36 @@ class MovieDetailsController: UIViewController {
         titleLabel.text = titleText
         ratingLabel.text = ratingText
         votesLabel.text = votesText
-        //cosmosView.rating = averageScore
         dateLabel.text = dateText
         overViewLabel.text = overviewText
         budgetLabel.text = budget
-        //print(overviewText)
+        
+        dateLabel.sizeToFit()
+        // manually create cosmosView
+        let cosmosView = CosmosView(frame: CGRect(x: dateLabel.frame.origin.x, y: (dateLabel.frame.origin.y + dateLabel.frame.height+5), width: 50, height: 50))
+        mainView.addSubview(cosmosView)
+        
+        cosmosView.settings.starSize = 10
+        cosmosView.settings.totalStars = 10
+        cosmosView.settings.starMargin = 0
+        cosmosView.rating = averageScore
+        
+        
+        // manually create hashtags view
+        let genresView = HashtagView(frame: CGRect(x: dateLabel.frame.origin.x-10, y: (cosmosView.frame.origin.y + cosmosView.frame.height+5), width: 150, height: 100))
+        genresView.tagBackgroundColor = UIColor.lightGray
+        genresView.tagCornerRadius = 5.0
+        genresView.tagPaddingTop = 2.0
+        genresView.tagPaddingBottom = 2.0
+        genresView.tagPaddingRight = 2.0
+        genresView.tagPaddingLeft = 2.0
+        genresView.horizontalTagSpacing = 2.0
+        
+        for i in genres {
+            let tag = HashTag(word: genre(id: i), withHashSymbol: false, isRemovable: false)
+            genresView.addTag(tag: tag)
+        }
+        mainView.addSubview(genresView)
         
         if let img_url1 = URL(string: "http://image.tmdb.org/t/p/w185/\(backgroundImg)") {
             do {

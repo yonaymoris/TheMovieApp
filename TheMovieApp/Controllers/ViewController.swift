@@ -13,6 +13,8 @@ import SVProgressHUD
 import CoreData
 import Hashtags
 
+var cellsPerRow:CGFloat = 3
+let cellPadding:CGFloat = 5
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -163,7 +165,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             detailsVC.ratingText = "\(movies[currentIndex].value(forKeyPath: "vote_average") as! Double)/10"
             detailsVC.votesText = "(\(movies[currentIndex].value(forKeyPath: "vote_count") as! Int64) votes)"
             detailsVC.averageScore = movies[currentIndex].value(forKeyPath: "vote_average") as! Double
-            detailsVC.dateText = "\(movies[currentIndex].value(forKeyPath: "release_date") as! String)/\(movies[currentIndex].value(forKeyPath: "origin_country") as! String)"
+            detailsVC.dateText = "\((movies[currentIndex].value(forKeyPath: "release_date") as! String).prefix(4))/\(movies[currentIndex].value(forKeyPath: "origin_country") as! String)"
             detailsVC.overviewText = movies[currentIndex].value(forKeyPath: "overview") as! String
             detailsVC.backgroundImg = movies[currentIndex].value(forKeyPath: "backdrop_path") as! String
             detailsVC.posterImg = movies[currentIndex].value(forKeyPath: "poster_path") as! String
