@@ -230,10 +230,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     //TODO: save an array of movies to Core Data Database
     func saveData(json: JSON) {
-        for i in 0...json.count-1 {
-            self.saveMovie(json: json[i])
+        if json != nil {
+            for i in 0...json.count-1 {
+                self.saveMovie(json: json[i])
+            }
+            extractOriginCountry()
         }
-        extractOriginCountry()
     }
     
     
@@ -322,8 +324,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     } else {
                         self.movies[i].setValue("Unknown", forKey: "origin_country")
                     }
-                    
-                    self.movies[i].setValue(movieDetailsJSON["budget"].int!, forKey: "budget")
+                    if movieDetailsJSON["budget"].int != nil {
+                        self.movies[i].setValue(movieDetailsJSON["budget"].int!, forKey: "budget")
+                    } else {
+                        self.movies[i].setValue(0, forKey: "budget")
+                    }
                     do {
                         try context.save()
                         //movies.append(movie)
