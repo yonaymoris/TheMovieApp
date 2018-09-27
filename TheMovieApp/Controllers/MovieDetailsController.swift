@@ -76,7 +76,7 @@ class MovieDetailsController: UIViewController {
                 let data = try Data(contentsOf: img_url1)
                 backgroundImage.image = UIImage(data: data)
             } catch let err {
-                print("Error")
+                print(err)
             }
         }
         
@@ -86,7 +86,7 @@ class MovieDetailsController: UIViewController {
                 let data1 = try Data(contentsOf: img_url2)
                 posterImage.image = UIImage(data: data1)
             } catch let err {
-                print("Error")
+                print(err)
             }
         }
         

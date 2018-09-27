@@ -58,11 +58,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     //MARK: - Alerts
     func reloadAlert() {
         
-        let alert = UIAlertController(title: "Connection Issues", message: "Oops! Check your internet connection, and retry.", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Retry", style: UIAlertActionStyle.default, handler: { action in
+        let alert = UIAlertController(title: "Connection Issues", message: "Oops! Check your internet connection, and retry.", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: { action in
             self.reloadMovieData()
         }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -132,30 +132,41 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return movies.count
     }
     
+    let imageCache = NSCache<AnyObject, AnyObject>()
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CollectionViewCell
         
-        let img_path = movies[indexPath.row].value(forKeyPath: "poster_path") as! String
-        cell.titleLabel.text = movies[indexPath.row].value(forKeyPath: "title") as! String
-        cell.ratingLabel.text = "\(movies[indexPath.row].value(forKeyPath: "vote_average") as! Double)/10(\(movies[indexPath.row].value(forKeyPath: "vote_count") as! Double) votes)"
+        cell.testImage.image = UIImage(named: "placeholder")
         
-        if let img_url = URL(string: "http://image.tmdb.org/t/p/w185/\(img_path)") {
-            do {
-                //print(img_url)
-                let data = try Data(contentsOf: img_url)
-                cell.testImage.image = UIImage(data: data)
-            } catch let err {
-                if flag == false {
-                    self.reloadAlert()
-                    flag = true
-                } else {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-                        self.flag = false
+        // for iPhone 8 Plus Problem solving
+        if indexPath.row < movies.count {
+            let img_path = movies[indexPath.row].value(forKeyPath: "poster_path") as! String
+            cell.titleLabel.text = movies[indexPath.row].value(forKeyPath: "title") as? String
+            cell.ratingLabel.text = "\(movies[indexPath.row].value(forKeyPath: "vote_average") as! Double)/10(\(movies[indexPath.row].value(forKeyPath: "vote_count") as! Double) votes)"
+            
+            if let imageFromCache = imageCache.object(forKey: img_path as String as AnyObject) as? UIImage {
+                cell.testImage.image = imageFromCache
+                return cell
+            }
+            
+            DispatchQueue.main.async {
+                if  let img_url = URL(string: "http://image.tmdb.org/t/p/w185/\(img_path)") {
+                    do {
+                        //print(img_url)
+                        let data = try Data(contentsOf: img_url)
+                        
+                        let imageToCache = UIImage(data: data)
+                        self.imageCache.setObject(imageToCache!, forKey: img_path as String as AnyObject)
+                        
+                        cell.testImage.image = imageToCache
+                    } catch let err {
+                        print(err)
                     }
                 }
-                print("Error")
             }
         }
+        
         return cell
     }
     
@@ -230,7 +241,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     //TODO: save an array of movies to Core Data Database
     func saveData(json: JSON) {
-        if json != nil {
+        if json != JSON.null {
             for i in 0...json.count-1 {
                 self.saveMovie(json: json[i])
             }
